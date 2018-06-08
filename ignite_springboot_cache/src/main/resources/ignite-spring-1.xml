@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <bean id="cacheManager" class="org.apache.ignite.cache.spring.SpringCacheManager">
+        <property name="gridName" value="myGrid"/>
+        <property name="configuration">
+            <bean class="org.apache.ignite.configuration.IgniteConfiguration" id="ignite.cfg">
+                <property name="cacheConfiguration">
+                    <bean class="org.apache.ignite.configuration.CacheConfiguration">
+                        <property name="name" value="spring_cache_test"/>
+                        <property name="cacheMode" value="PARTITIONED"/>
+                        <property name="backups" value="1"/>
+                    </bean>
+                </property>
+                <property name="peerClassLoadingEnabled" value="false"></property>
+                <property name="discoverySpi">
+                    <bean class="org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi">
+                        <property name="ipFinder">
+                            <bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.vm.TcpDiscoveryVmIpFinder">
+                                <property name="addresses">
+                                    <list>
+                                        <value>127.0.0.1:47500</value>
+                                        <value>192.168.159.129:47500..47509</value>
+                                    </list>
+                                </property>
+                            </bean>
+
+                        </property>
+                    </bean>
+                </property>
+
+            </bean>
+        </property>
+    </bean>
+
+    <cache:annotation-driven/>
+
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <bean class="cn.cloudwalk.basic.ignite.config.IgniteSessionConfiguration">
+        <property name="backups" value="0" />
+        <property name="cacheMode" value="REPLICATED" />
+        <property name="clientMode" value="false" />
+        <property name="sessionTimeOut" value="1800" />
+        <property name="addresses">
+            <list>
+                <value>127.0.0.1:47500..47509</value>
+            </list>
+        </property>
+    </bean>
+</beans>
