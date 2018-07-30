@@ -120,8 +120,18 @@ public class IgniteSessionConfiguration {
      * 启动 ignite 节点
      * @return
      */
-    public Ignite ignite(){
-        return Ignition.start(igniteConfiguration());
+    private Ignite ignite;
+    public Ignite getIgnite() {
+		return ignite;
+	}
+
+	public void setIgnite(Ignite ignite) {
+		this.ignite = ignite;
+	}
+
+	public Ignite ignite(){
+    	this.ignite=Ignition.start(igniteConfiguration());
+    	return ignite;
     }
 
     /**

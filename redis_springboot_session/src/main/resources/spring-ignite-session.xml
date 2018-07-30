@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
-    <bean class="cn.cloudwalk.basic.ignite.config.IgniteSessionConfiguration">
+    <bean id="igniteSessionConfiguration" class="cn.cloudwalk.basic.ignite.config.IgniteSessionConfiguration">
         <property name="backups" value="0" />
         <property name="cacheMode" value="REPLICATED" />
         <property name="clientMode" value="false" />
